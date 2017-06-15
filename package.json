@@ -1,0 +1,19 @@
+{
+  "name": "api-ms",
+  "version": "0.0.1",
+  "description": "Select between viewing several APIs created for different purposes",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.15.3"
+  },
+  "engines": {
+    "node": "8.1.x"
+  },
+  "repository": {
+    "url": "https://github.com/mishellscripts/api-ms"
+  },
+  "license": "MIT"
+}
