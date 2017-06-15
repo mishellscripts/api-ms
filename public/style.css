@@ -1,0 +1,29 @@
+body {
+  font-family: 'Overpass', sans-serif;
+  background-color: #333333;
+}
+
+h1 {
+  font-size: 3em;
+  text-align: center;
+  margin: 10% 0%;
+      color: #CFB53B;
+}
+
+a, a:hover {
+  color: #CFB53B;
+  font-size: 1.5em;
+  text-decoration: none;
+  cursor: pointer;
+} 
+
+.entry {
+  color: #ffffff;
+     padding: 10px;
+}
+
+.entry:hover {
+   border: 1px solid #ffffff;
+  border-radius: 20px;
+   
+}
