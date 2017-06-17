@@ -1,8 +1,8 @@
 // Imports needed for NodeJS app
 var express = require('express');
 var http = require('http');
-var moment = require('moment');
-var path = require('path');
+var timestamp = require('./routes/timestamp');
+var whoami = require('./routes/whoami')
 
 // Create instance of app
 var app = express();
@@ -21,34 +21,11 @@ app.get("/timestamp", function (req, res) {
 });
 
 app.get('/timestamp/:string', function(req, res) {
-  var timeObj = { unix: null, natural: null};
-  var dateStr = req.params.string;
-  var date = new Date(dateStr);
-  
-  // Unix format given if string is all digits
-  if (/^\d+$/.test(dateStr)) {
-    var unixVal = Number.parseInt(dateStr);
-     timeObj.unix = unixVal;
-     timeObj.natural = moment.unix(unixVal).format("MMMM DD, YYYY");
-  }
-  // Natural format given
-  else if (dateStr.split(" ").length === 3) {
-    timeObj.unix = date.getTime()/1000,
-    timeObj.natural = dateStr
-  }
-  res.send(timeObj);
+  res.send(timestamp(req.params.string));
 });
 
 app.get('/whoami', function(req, res) {
-  var ip = req.headers['x-forwarded-for'].split(',')[0];
-  var language = req.headers['accept-language'].split(',')[0];
-  var os =  req.headers['user-agent'].split('(')[1].split(')')[0];
-  var clientInfo = {
-    ipaddress: ip,
-    language: language,
-    software: os
-  };
-  res.send(clientInfo);
+  res.send(whoami(req));
 });
 
 // listen for requests :)
