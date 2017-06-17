@@ -1,7 +1,10 @@
+// Requirements and initialization of router
+var express = require('express');
+var router = express.Router();
 // Requirement for date formatting
 var moment = require('moment');
 
-module.exports = function(dateStr) {
+var getTimeObj = function(dateStr) {
   var timeObj = { unix: null, natural: null};
     var date = new Date(dateStr);
 
@@ -18,3 +21,16 @@ module.exports = function(dateStr) {
     }
   return timeObj;
 };
+
+router.get("/", function (req, res) {
+  res.sendFile('timestamp.html', {root: 'views'});
+});
+
+router.get('/:string', function(req, res) {
+  res.send(getTimeObj(req.params.string));
+});
+
+module.exports = router;
+
+
+
